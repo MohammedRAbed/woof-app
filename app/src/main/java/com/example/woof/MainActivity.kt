@@ -69,7 +69,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            WoofTheme(darkTheme = true) {
+            WoofTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize()
@@ -142,6 +142,7 @@ fun DogItem(
     val color by animateColorAsState(
         targetValue = if (expanded) MaterialTheme.colorScheme.outline
         else MaterialTheme.colorScheme.secondaryContainer,
+        label = "",
     )
 
     Card(modifier = modifier) {
@@ -233,10 +234,9 @@ fun DogInformation(
 @Composable
 fun DogItemButton(
     expanded: Boolean = false,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    onClick: () -> Unit
 ) {
-    IconButton(onClick = onClick, modifier = modifier) {
+    IconButton(onClick = onClick) {
         Icon(
             imageVector = if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
             contentDescription = "",
